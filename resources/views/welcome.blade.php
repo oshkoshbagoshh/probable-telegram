@@ -45,12 +45,12 @@
                 </div>
             </div>
             <h1 class="title is-1">
-                Welcome to My Website
+
             </h1>
             <h2 class="subtitle is-4">
-                Innovate with modern solutions
+                Trending, Tested, Trusted.
             </h2>
-            <a href="#" class="button is-primary is-large">
+            <a href="{{ route('articles.index') }}" class="button is-primary is-large">
                 Get Started
             </a>
         </div>
