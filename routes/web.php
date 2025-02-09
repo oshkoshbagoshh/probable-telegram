@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use Carbon\Traits\Date;
 use Illuminate\Support\Facades\Route;
 
@@ -19,10 +20,13 @@ use Illuminate\Support\Facades\Route;
 //print_r($viewData);
 
 Route::get('/', function () {
-    global $viewData;
-    return view('zzwelcome')->with($viewData);
+    return view('home');
+});
+
+Route::get('/misc', function () {
+    return view('misc.index');
 });
 
 
-Route::get('/articles', [\App\Http\Controllers\ArticleController::class, 'index'])->name('articles.index');
+Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
 

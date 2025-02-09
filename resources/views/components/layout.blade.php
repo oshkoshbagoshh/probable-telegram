@@ -17,23 +17,10 @@
 </head>
 <body>
 <!-- Navigation Bar -->
-<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-        <a class="navbar-item" href="#">My Website</a>
-    </div>
-    <div class="navbar-menu">
-        <div class="navbar-start">
-            <a class="navbar-item" href="#">Home</a>
-            <a class="navbar-item" href="#">About</a>
-            <a class="navbar-item" href="#">Services</a>
-            <a class="navbar-item" href="#">Contact</a>
-        </div>
-    </div>
-</nav>
-<x-hero />
+<main>
 
-
-
+{{ $slot }}
+</main>
 
 <!-- Footer -->
 <footer class="footer">
