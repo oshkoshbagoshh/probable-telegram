@@ -35,7 +35,4 @@ class ArticleController extends Controller
     }
 
     //TODO:  store method to display individual articles
-
-
-
 }

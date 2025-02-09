@@ -16,6 +16,7 @@ Route::get('/misc', function () {
 
 
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
+Route::get('/articles/{id}', [ArticleController::class, 'show'])->name('articles.show');
 
 // Route for uploading Excel Spreadsheet for Products
 Route::post('/import-products', [\App\Http\Controllers\ProductController::class, 'import'])

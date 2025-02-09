@@ -15,22 +15,19 @@ class ProductController extends Controller
     public function index()
     {
         // the view for all of the products on the front end
-     $productsList = [
-         ''
 
-     ]
+        $viewData = json_decode('../../../zzMisc/dummyproducts.json');
+        return $viewData;
     }
-    {
 
-    }
     public function import(Request $request): RedirectResponse
     {
         $request->validate([
             'file' => 'required|mimes:xlsx,xls,csv',
         ]);
 
-//        Save the uploaded file to the storage / ap directory
-        $path =$request->file('file')->store('uploads');
+        //        Save the uploaded file to the storage / ap directory
+        $path = $request->file('file')->store('uploads');
 
         // Import the excel file from storage
 
