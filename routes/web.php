@@ -1,23 +1,10 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ProductController;
 use Carbon\Traits\Date;
 use Illuminate\Support\Facades\Route;
 
-//$viewData = [
-//    'name' => 'Article Listing Page',
-//    'subtitle' => 'As i have met you, so you must acquire one another.',
-//    'foo' => 'bar',
-//    'users' => [
-//        'aj' => 'Chief Technology Officer',
-//        'Michael' => 'Chief Executive Officer',
-//        'Jeff' => 'Director of Marketing',
-//        'Janelle' => 'Director of Human Resources',
-//        'Kamron' => 'temp',
-//    ]
-//
-//];
-//print_r($viewData);
 
 Route::get('/', function () {
     return view('home');
@@ -30,3 +17,16 @@ Route::get('/misc', function () {
 
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
 
+// Route for uploading Excel Spreadsheet for Products
+Route::post('/import-products', [\App\Http\Controllers\ProductController::class, 'import'])
+    ->name('products.import');
+
+
+
+//  Admin routes
+Route::prefix('admin')->middleware('auth')->group(function () {
+    Route::get('/products', [ProductController::class, 'index'])->name('admin.products.index');
+    Route::post('/import-products', [ProductController::class, 'import'])->name('admin.products.import');
+    Route::get('/articles', [ArticleController::class, 'index'])->name('admin.articles.index');
+    // Add more routes as needed for articles and reports
+});
