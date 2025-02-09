@@ -1,6 +1,7 @@
 <x-layout>
     <!DOCTYPE html>
     <html lang="en">
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,91 +13,104 @@
                 max-width: 150px;
                 margin-bottom: 20px;
             }
+
             .hero-title {
-                color: #0a2463; /* Custom deep blue color */
+                color: #0a2463;
+                /* Custom deep blue color */
             }
+
             .hero-subtitle {
-                color: #5f6c7b; /* Subtle gray for the subtitle */
+                color: #5f6c7b;
+                /* Subtle gray for the subtitle */
             }
+
             .cta-button {
-                background-color: #ff6f61; /* Accent coral color */
+                background-color: #ff6f61;
+                /* Accent coral color */
                 color: white;
                 border-radius: 8px;
             }
+
             .cta-button:hover {
-                background-color: #ff3b28; /* Darker coral for hover effect */
+                background-color: #ff3b28;
+                /* Darker coral for hover effect */
             }
         </style>
     </head>
+
     <body>
-    <x-navbar />
+        <x-navbar />
 
-    <!-- Hero Section -->
-    <section class="hero is-medium is-light">
-        <div class="hero-body">
-            <div class="container has-text-centered">
-                <!-- Logo -->
-                <img src="{{ asset('/img/hero-logo.svg') }}" alt="Logo" class="hero-logo">
+        <!-- Hero Section -->
+        <section class="hero is-medium is-light">
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <!-- Logo -->
+                    <img src="{{ asset('/img/hero-logo.svg') }}" alt="Logo" class="hero-logo">
 
-                <!-- Title -->
-                <h1 class="title hero-title is-size-1">
-                    Welcome to Klutch Products
-                </h1>
+                    <!-- Title -->
+                    <h1 class="title hero-title is-size-1">
+                        Welcome to Klutch Products
+                    </h1>
 
-                <!-- Subtitle -->
-                <p class="subtitle hero-subtitle is-size-4">
-                    Your trusted source for product reviews and trending items.
-                </p>
+                    <!-- Subtitle -->
+                    <p class="subtitle hero-subtitle is-size-4">
+                        Your trusted source for product reviews and trending items.
+                    </p>
 
-                <!-- Call-to-Action Button -->
-                <a href="{{ 'user.register' }}" class="button cta-button is-medium mt-4">
-                    Explore Products
-                </a>
-            </div>
-        </div>
-    </section>
-
-    {{--  show trending articles / products --}}
-<section>
-    <div class="container">
-    <div class="card">
-        <div class="card-image">
-            <figure class="image is-4by3">
-                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-            </figure>
-        </div>
-        <div class="card-content">
-            <div class="media">
-                <div class="media-left">
-                    <figure class="image is-48x48">
-                        <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-                    </figure>
-                </div>
-                <div class="media-content">
-                    <p class="title is-4">Title</p>
-                    <p class="subtitle is-6">@subtitle</p>
+                    <!-- Call-to-Action Button -->
+                    <a href="{{ route('user.register') }}" class="mt-4 button cta-button is-medium">
+                        Explore Products
+                    </a>
                 </div>
             </div>
-            <div class="content">
-                Enter Content here <a>${8:@bulmaio</a>.
-                <a href="#">#css</a> <a href="#">#responsive</a>
-                <br>
-                <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+        </section>
+
+        <!-- Trending Articles/Products Section -->
+        <section>
+            <div class="container">
+                {{-- Include articles index --}}
+                @include('articles.index', ['article' => $article])
+
+
+                {{-- Loop through articles --}}
+                @foreach ($article as $articles)
+                    <div class="mt-4 card">
+                        <div class="card-content">
+                            <h2 class="title">{{ $articles->title }}</h2>
+                            <p>{{ $articles->content }}</p>
+                            <a href="{{ route('articles.show', $articles->id) }}" class="button is-link">Read More</a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </section>
+
+        <!-- Scroll-to-Top Button -->
+        <button id="scrollToTopBtn" class="button is-link"
+            style="position: fixed; bottom: 20px; right: 20px; display: none;">
+            ↑ Top
+        </button>
+
+        <script>
+            const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    scrollToTopBtn.style.display = "block";
+                } else {
+                    scrollToTopBtn.style.display = "none";
                 }
-            </div>
-        </div>
-    </div>
-    @include('articles.index')>
+            });
 
-    @foreach($article as $articles)
-
-    @endforeach
-</section>
-
-
-
-
+            scrollToTopBtn.addEventListener("click", () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                });
+            });
+        </script>
     </body>
+
     </html>
-{{--    TODO: insert scroll to the top button --}}
 </x-layout>

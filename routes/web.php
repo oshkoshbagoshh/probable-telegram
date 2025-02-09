@@ -23,6 +23,9 @@ Route::post('/import-products', [\App\Http\Controllers\ProductController::class,
     ->name('products.import');
 
 
+// Registration for users
+Route::get('user/register',[UserController::class, 'register'])->name('user.register');
+
 
 //  Admin routes
 Route::prefix('admin')->middleware('auth')->group(function () {
