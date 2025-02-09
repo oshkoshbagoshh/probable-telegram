@@ -20,8 +20,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     global $viewData;
-    return view('welcome')->with($viewData);
+    return view('zzwelcome')->with($viewData);
 });
+
 
 Route::get('/articles', [\App\Http\Controllers\ArticleController::class, 'index'])->name('articles.index');
 

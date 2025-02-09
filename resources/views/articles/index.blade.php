@@ -17,7 +17,8 @@
                         <h2 class="title is-5">{{ $article['title'] }}</h2>
                         <p class="subtitle is-6">Published on: {{ $article['published_at'] }}</p>
                         <p>{{ Str::limit($article['content'], 100) }}</p>
-                        <a href="{{ route('articles.index', $article['id']) }}" class="button is-primary is-small">Read More</a>
+                        <a href="{{ route('articles.show', $article['id']) }}" class="button is-primary is-small">Read More</a>
+
                     </div>
                 </div>
             @endforeach

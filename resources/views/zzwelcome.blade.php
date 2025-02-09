@@ -30,32 +30,10 @@
         </div>
     </div>
 </nav>
+<x-hero />
 
-<!-- Hero Section -->
-<section class="hero is-fullheight">
-    <div class="hero-body">
-        <div class="container has-text-centered">
-            <div class="columns is-centered">
-                <div class="column is-half">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300">
-                        <rect width="500" height="300" fill="#00d1b2" />
-                        <circle cx="250" cy="150" r="100" fill="#3273dc" />
-                        <text x="50%" y="50%" font-size="48" fill="#fff" text-anchor="middle" dy=".3em">Blog</text>
-                    </svg>
-                </div>
-            </div>
-            <h1 class="title is-1">
 
-            </h1>
-            <h2 class="subtitle is-4">
-                Trending, Tested, Trusted.
-            </h2>
-            <a href="{{ route('articles.index') }}" class="button is-primary is-large">
-                Get Started
-            </a>
-        </div>
-    </div>
-</section>
+
 
 <!-- Footer -->
 <footer class="footer">

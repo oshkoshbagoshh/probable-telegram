@@ -31,4 +31,9 @@ class ArticleController extends Controller
         // Pass the data to the view
         return view('articles.index', ['articles' => $articles]);
     }
+
+    //TODO:  store method to display individual articles
+
+
+
 }
